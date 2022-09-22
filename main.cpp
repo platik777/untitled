@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
         if ( FileCommands[j].length() > 2 && FileCommands[j].length() < 6 ) {
             for (int i = 1; i < FileCommands[j].length(); i++ ) {
                 char str[] = {'-', FileCommands[j][i], '\0'};
-                FileCommands.push_back(str);
+                FileCommands.emplace_back(str);
             }
             FileCommands.erase(FileCommands.begin() + j);
         }
@@ -67,6 +67,8 @@ int main(int argc, char* argv[]) {
                 count = 0;
                 file_in.clear();
                 file_in.seekg(0);
+            } else {
+                std::cout << "You entered wrong command" << std::endl;
             }
         }
         std::cout << '\n';
